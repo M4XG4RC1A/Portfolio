@@ -197,6 +197,25 @@ article {
   z-index: 1;
 }
 
+.item-box {
+  position: relative;
+  background: var(--border-gradient-onyx);
+  width: 80px;
+  aspect-ratio : 1 / 1;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: var(--orange-yellow-crayola);
+  box-shadow: var(--shadow-1);
+  z-index: 1;
+}
+
+.item-box img{
+  width: 70px;
+}
+
 .icon-box::before {
   content: "";
   position: absolute;
@@ -746,7 +765,24 @@ main {
 .clients-item {
   min-width: 50%;
   scroll-snap-align: start;
+  align-items: center;
+  text-align: center;
 }
+
+.skill-item {
+  min-width: 20%;
+  scroll-snap-align: start;
+  align-items: center;
+  text-align: center;
+}
+
+.skillimg-item {
+  width: 80px;
+  scroll-snap-align: start;
+  align-items: center;
+  text-align: center;
+}
+
 
 .clients-item img {
   width: 100%;
