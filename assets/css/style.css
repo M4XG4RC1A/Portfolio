@@ -291,6 +291,23 @@ article.active {
 
 .has-scrollbar::-webkit-scrollbar-button { width: 20px; }
 
+.has-scrollbar-vert::-webkit-scrollbar {
+  width: 5px; /* for vertical scrollbar */
+  height: 5px; /* for horizontal scrollbar */
+}
+
+.has-scrollbar-vert::-webkit-scrollbar-track {
+  background: var(--onyx);
+  border-radius: 5px;
+}
+
+.has-scrollbar-vert::-webkit-scrollbar-thumb {
+  background: var(--orange-yellow-crayola);
+  border-radius: 5px;
+}
+
+.has-scrollbar-vert::-webkit-scrollbar-button { height: 0px; }
+
 .content-card {
   position: relative;
   background: var(--border-gradient-onyx);
@@ -597,6 +614,17 @@ main {
   scroll-snap-type: inline mandatory;
 }
 
+.portfolio-text {
+  height: 20dvh;
+  /*display: flex;*/
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+}
+
+
+
 .testimonials-item {
   min-width: 100%;
   scroll-snap-align: center;
@@ -626,6 +654,158 @@ main {
   overflow: hidden;
 }
 
+/**
+ * #portfolio-modal
+ */
+
+ .portfolio-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 20; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.portfolio-modal-content {
+  position: absolute;
+  background-color: var(--eerie-black-2);
+  padding: 15px;
+  margin: auto auto; /* 15% from the top and centered */
+  border-radius: 14px;
+  border: 1px solid #888;
+  width: 70dvw; /* Could be more or less, depending on screen size */
+  height: 70dvh;
+  top: 15dvh;
+  right: 15dvw;
+  border: 1px solid var(--jet);
+  box-shadow: var(--shadow-5);
+  transition: var(--transition-1);
+}
+
+.portfolio-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--onyx);
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white-2);
+  font-size: 18px;
+  opacity: 0.7;
+}
+
+.portfolio-left-btn {
+  position: absolute;
+  top: 30vh+32px+10px;
+  left: 5dvw;
+  background: var(--onyx);
+  border-radius: 7px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white-2);
+  font-size: 18px;
+  opacity: 0.7;
+}
+
+.portfolio-right-btn {
+  position: absolute;
+  top: 30vh+10px+10px;
+  right: 5dvw;
+  background: var(--onyx);
+  border-radius: 7px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white-2);
+  font-size: 18px;
+  opacity: 0.7;
+}
+
+.portfolio-right-btn:hover,
+.portfolio-right-btn:focus { opacity: 1; }
+
+.portfolio-right-btn ion-icon { --ionicon-stroke-width: 50px; }
+
+.portfolio-left-btn:hover,
+.portfolio-left-btn:focus { opacity: 1; }
+
+.portfolio-left-btn ion-icon { --ionicon-stroke-width: 50px; }
+
+
+.portfolio-close-btn:hover,
+.portfolio-close-btn:focus { opacity: 1; }
+
+.portfolio-close-btn ion-icon { --ionicon-stroke-width: 50px; }
+
+.portfolio-img {
+  position: relative;
+  margin: 32px auto; /* 15% from the top and centered */
+  width: 60dvw; /* Could be more or less, depending on screen size */
+  height: 30vh;
+  background: var(--bg-gradient-onyx);
+  border-radius: 14px;
+  margin-bottom: 15px;
+  box-shadow: var(--shadow-2);
+  align-items: center;
+}
+
+.portfolio-img img{ 
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  object-fit: contain; 
+}
+
+.portfolio-content{
+  position: relative;
+  top: 52px;
+}
+
+.portfolio-modal-title { 
+  margin-bottom: 4px; 
+}
+
+.portfolio-modal-content time {
+  font-size: var(--fs-6);
+  color: var(--light-gray-70);
+  font-weight: var(--fw-300);
+  margin-bottom: 10px;
+}
+
+.portfolio-modal-content p {
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  line-height: 1.6;
+}
+
+/* The Close Button 
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}*/
 
 /**
  * #testimonials-modal
@@ -1453,6 +1633,11 @@ textarea.form-input::-webkit-resizer { display: none; }
     padding-bottom: 35px;
   }
 
+  /*.portfolio-text {
+    background-color: aquamarine;
+    height: 10dvh;
+  }*/
+
   .content-card {
     padding: 30px;
     padding-top: 25px;
@@ -1594,6 +1779,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   .sidebar, article { width: 700px; }
 
   .has-scrollbar::-webkit-scrollbar-button { width: 100px; }
+  .has-scrollbar-vert::-webkit-scrollbar-button { height: 100px; }
 
 
 
