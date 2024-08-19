@@ -72,16 +72,15 @@ for (let i = 0; i < selectItems.length; i++) {
 }
 
 // filter variables
-const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = function (selectedValue) {
-  for (let i = 0; i < filterItems.length; i++) {
+  for (let i = 0; i < portfolioItem.length; i++) {
     if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (filterItems[i].dataset.category.split(",").includes(selectedValue)) {
-      filterItems[i].classList.add("active");
+      portfolioItem[i].classList.add("active");
+    } else if (portfolioItem[i].dataset.category.split(",").includes(selectedValue)) {
+      portfolioItem[i].classList.add("active");
     } else {
-      filterItems[i].classList.remove("active");
+      portfolioItem[i].classList.remove("active");
     }
   }
 }
@@ -108,21 +107,40 @@ for (let i = 0; i < filterBtn.length; i++) {
 //Modal for portfolio
 
 // testimonials variables
-const portfolioItem = document.querySelectorAll("[data-filter-item]");
+const portfolioItem = document.querySelectorAll("[portfolio-filter-item]");
 const pmodalContainer = document.querySelector("[portfolio-modal-container]");
 const pmodalCloseBtn = document.querySelector("[portfolio-modal-close-btn]");
 
+// Images control
+var iImg = 0;
+var file = ["PockelsLab","7"];
+
 // modal variable
-//const modalImg = document.querySelector("[data-modal-img]");
-//const modalTitle = document.querySelector("[data-modal-title]");
+const portfolioImg = document.querySelector("[portfolio-img]");
+const portfolionImg = document.querySelector("[portfolio-nImg]");
+const portfolioContent = document.querySelector("[portfolio-content]");
 //const modalText = document.querySelector("[data-modal-text]");
 
-// Get the modal
-var modal = document.getElementById("portfolio-modal");
+
+function backImg(){
+  if(iImg<=0) iImg = file[1];
+  iImg--;
+  return setImg();
+}
+
+function nextImg(){
+  iImg++;
+  if(iImg>=file[1]) iImg = 0;
+  return setImg();
+}
+
+function setImg(){
+  portfolionImg.innerHTML = "<p>"+(iImg+1).toString()+"/"+file[1]+"</p>";
+  return portfolioImg.setAttribute('src',"./assets/images/portfolio/"+file[0]+"/"+(iImg+1).toString()+".png");
+}
 
 // modal toggle function
 const portfolioModalFunc = function () {
-  console.log("Clicked");
   if (pmodalContainer.style.display == "block"){
     pmodalContainer.style.display = "none";
   }else{
@@ -133,16 +151,20 @@ const portfolioModalFunc = function () {
 
 
 // add click event to all modal items
-for (let i = 0; i < testimonialsItem.length; i++) {
+for (let i = 0; i < portfolioItem.length; i++) {
 
   portfolioItem[i].addEventListener("click", function () {
 
+    file = this.querySelector("[portfolio-dummy-img]").alt.split(",");
+    iImg = 0;
+    portfolioContent.innerHTML = this.querySelector("[portfolio-dummy]").innerHTML;
     //modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
     //modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
     //modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
     //modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
 
     portfolioModalFunc();
+    setImg();
 
   });
 
@@ -150,45 +172,6 @@ for (let i = 0; i < testimonialsItem.length; i++) {
 
 // add click event to modal close button
 pmodalCloseBtn.addEventListener("click", portfolioModalFunc);
-
-/*
-// testimonials variables
-const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
-const modalContainer = document.querySelector("[data-modal-container]");
-const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
-const overlay = document.querySelector("[data-overlay]");
-
-// modal variable
-const modalImg = document.querySelector("[data-modal-img]");
-const modalTitle = document.querySelector("[data-modal-title]");
-const modalText = document.querySelector("[data-modal-text]");
-
-// modal toggle function
-const testimonialsModalFunc = function () {
-  modalContainer.classList.toggle("active");
-  overlay.classList.toggle("active");
-}
-
-// add click event to all modal items
-for (let i = 0; i < testimonialsItem.length; i++) {
-
-  testimonialsItem[i].addEventListener("click", function () {
-
-    modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-    modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-    modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-    modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
-
-    testimonialsModalFunc();
-
-  });
-
-}
-
-// add click event to modal close button
-modalCloseBtn.addEventListener("click", testimonialsModalFunc);
-overlay.addEventListener("click", testimonialsModalFunc);
-*/
 
 
 
