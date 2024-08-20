@@ -109,6 +109,11 @@
     var(--blue-tec), 
     var(--blue-ok2)
   );
+  --text-color-sel: linear-gradient(
+    to right,
+    var(--blue-tec), 
+    var(--blue-ok2)
+  );
 
   --slider-color: linear-gradient(
     to right,
@@ -488,7 +493,7 @@ main {
 .info_more-btn:focus::before { background: var(--focus-color2); }
 
 .info_more-btn span { 
-  background: var(--orange-yellow-crayola); /*modified*/
+  background: var(--text-color); /*modified*/
   background-clip: text;
   color: transparent;
   display: none; 
@@ -594,7 +599,7 @@ main {
 .navbar-link:focus { color: var(--light-gray-70); }
 
 .navbar-link.active { 
-  background: var(--orange-yellow-crayola); /*modified*/
+  background: var(--text-color); /*modified*/
   background-clip: text;
   color: transparent;
 }
@@ -1697,7 +1702,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .avatar-box { border-radius: 30px; }
 
-  .avatar-box img { width: 120px; }
+  .avatar-box img { width: 120px; border-radius: 30px; }
 
   .info-content .name { margin-bottom: 15px; }
 
@@ -1984,7 +1989,11 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .filter-item button:hover { color: var(--light-gray-70); }
 
-  .filter-item button.active { color: var(--orange-yellow-crayola); }
+  .filter-item button.active { 
+    background: var(--text-color-sel);
+    background-clip: text;
+    color: transparent;
+   }
 
   /* portfolio and blog grid */
 
@@ -2214,7 +2223,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .sidebar-info { flex-direction: column; }
 
-  .avatar-box img { width: 150px; }
+  .avatar-box img { width: 150px; border-radius: 30px; }
 
   .info-content .name {
     white-space: nowrap;
